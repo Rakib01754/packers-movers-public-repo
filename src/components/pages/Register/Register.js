@@ -1,7 +1,50 @@
-import React from 'react';
+import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const { signUp, googleSignIn } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider()
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        signUp(email, password)
+            .then(result => {
+                const user = result.user
+                updateProfile(user, {
+                    displayName: name,
+                }).then(() => {
+                    console.log(user)
+                }).catch((error) => {
+                    const errorMessage = error.message;
+                    console.log(errorMessage)
+                });
+
+            })
+            .catch((error) => {
+
+            });
+
+        form.reset()
+
+
+    }
+
+    const handlegoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
+
+    }
     return (
         <section className="h-screen mb-28">
             <div className="px-6 h-full text-gray-800">
@@ -19,16 +62,16 @@ const Register = () => {
                         />
                     </div>
                     <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12">
-                        <form>
-                            <button
-                                type="button"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
-                                className="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
-                            >
-                                Sign in with Google
-                            </button>
-
+                        <button
+                            onClick={handlegoogleSignIn}
+                            type="button"
+                            data-mdb-ripple="true"
+                            data-mdb-ripple-color="light"
+                            className="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
+                        >
+                            Sign in with Google
+                        </button>
+                        <form onSubmit={handleFormSubmit}>
                             <div
                                 className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
                             >
@@ -40,7 +83,7 @@ const Register = () => {
                                 <input
                                     type="text" name="name"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                    id="exampleFormControlInput2"
+                                    id="registerName"
                                     placeholder="Full Name"
                                 />
                             </div>
@@ -49,7 +92,7 @@ const Register = () => {
                                 <input
                                     type="email" name="email"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                    id="exampleFormControlInput2"
+                                    id="registerEmail"
                                     placeholder="Email address"
                                 />
                             </div>
@@ -59,7 +102,7 @@ const Register = () => {
                                 <input
                                     type="password" name="password"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                    id="exampleFormControlInput2"
+                                    id="registerPassword"
                                     placeholder="Password"
                                 />
                             </div>
@@ -72,7 +115,7 @@ const Register = () => {
 
                             <div className="text-center lg:text-left">
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                                 >
                                     Register

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     return (
         <section className="h-screen mb-28">
             <div className="px-6 h-full text-gray-800">
-                <h1 className='font-bold text-5xl underline text-orange-600'>Login</h1>
+                <h1 className='font-bold text-5xl underline text-orange-600'>Register</h1>
                 <div
                     className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
                 >
@@ -35,10 +35,19 @@ const Login = () => {
                                 <p className="text-center font-semibold mx-4 mb-0">Or</p>
                             </div>
 
+                            {/* Name input  */}
+                            <div className="mb-6">
+                                <input
+                                    type="text" name="name"
+                                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    id="exampleFormControlInput2"
+                                    placeholder="Full Name"
+                                />
+                            </div>
                             {/* Email input  */}
                             <div className="mb-6">
                                 <input
-                                    type="text"
+                                    type="email" name="email"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                     id="exampleFormControlInput2"
                                     placeholder="Email address"
@@ -48,7 +57,7 @@ const Login = () => {
                             {/* Password input --> */}
                             <div className="mb-6">
                                 <input
-                                    type="password"
+                                    type="password" name="password"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                     id="exampleFormControlInput2"
                                     placeholder="Password"
@@ -66,14 +75,14 @@ const Login = () => {
                                     type="button"
                                     className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                                 >
-                                    Login
+                                    Register
                                 </button>
                                 <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-                                    Don't have an account?
+                                    Already have an account?
                                     <Link
-                                        to="/register"
-                                        className="text-orange-600 hover:text-orange-700 focus:text-red-700 transition duration-200 ease-in-out"
-                                    > Register</Link
+                                        to="/login"
+                                        className="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+                                    >Login</Link
                                     >
                                 </p>
                             </div>
@@ -85,4 +94,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

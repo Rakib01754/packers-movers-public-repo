@@ -5,6 +5,7 @@ import Blogs from '../pages/Blogs/Blogs';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 import ServiceDetails from '../pages/Services/ServiceDetails';
 import Services from '../pages/Services/Services';
 
@@ -33,6 +34,10 @@ const Routes = () => {
                 {
                     path: 'login',
                     element: <Login></Login>
+                },
+                {
+                    path: 'register',
+                    element: <Register></Register>
                 },
                 {
                     path: 'service/:id',

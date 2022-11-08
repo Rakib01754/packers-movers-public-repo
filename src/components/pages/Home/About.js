@@ -16,7 +16,7 @@ const About = () => {
                     <p className="mt-6 mb-8 text-lg sm:mb-12">The Packers And Movers  is one of the Bangladesh leading reputed online moving companies booking platforms that started its journey in 2006 with an objective to make the search for dependable packers and movers in India a hassle-free one for the people. This website is a resourceful online database where people can find a list of packer and mover service providers available in Dhaka, Chittagong, Barishal, Kishoreganj, and other big and small cities.
                     </p>
                     <Link to='/blogs'>
-                        <button className="bg-blue-300 hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 rounded my-3">
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold hover:text-white py-2 px-4 rounded my-3">
                             More About Us
                         </button>
                     </Link>

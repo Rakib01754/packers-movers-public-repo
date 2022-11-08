@@ -5,6 +5,7 @@ import Blogs from '../pages/Blogs/Blogs';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import ServiceDetails from '../pages/Services/ServiceDetails';
 import Services from '../pages/Services/Services';
 
 const Routes = () => {
@@ -20,7 +21,10 @@ const Routes = () => {
                 },
                 {
                     path: 'services',
-                    element: <Services></Services>
+                    loader: () => fetch('http://localhost:5000/services')
+                    ,
+                    element: <Services></Services>,
+
                 },
                 {
                     path: 'blogs',
@@ -30,6 +34,13 @@ const Routes = () => {
                     path: 'login',
                     element: <Login></Login>
                 },
+                {
+                    path: 'service/:id',
+                    loader: ({ params }) =>
+                        fetch(`http://localhost:5000/service/${params.id}`)
+                    ,
+                    element: <ServiceDetails></ServiceDetails>
+                }
             ]
         }
     ])

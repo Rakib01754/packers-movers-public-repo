@@ -16,7 +16,7 @@ const Routes = () => {
             children: [
                 {
                     path: '/',
-                    element: <Home></Home>
+                    element: <Home></Home>,
                 },
                 {
                     path: 'services',

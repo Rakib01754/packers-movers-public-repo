@@ -1,9 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import SubmitReview from './SubmitReview';
 
 const ReviewArea = ({ service }) => {
+    const { _id } = service;
+    const [customerReviews, setCustomerReviews] = useState([])
+    console.log(customerReviews);
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${_id}`)
+            .then(res => res.json())
+            .then(data => setCustomerReviews(data));
+    }, [])
+
+
     const { user } = useContext(AuthContext)
     return (
         <>

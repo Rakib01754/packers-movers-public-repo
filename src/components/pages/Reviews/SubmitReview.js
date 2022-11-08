@@ -7,8 +7,6 @@ const SubmitReview = ({ service, user }) => {
         e.preventDefault()
         const form = e.target;
         const comment = form.comment.value;
-        // const time = new Date();
-        // console.log(time);
         const reviewData = {
             serviceId: _id,
             userName: displayName,
@@ -40,7 +38,7 @@ const SubmitReview = ({ service, user }) => {
         <div>
             <h1 className='font-bold text-4xl underline text-orange-600 my-3'>Make A Review</h1>
             <form onSubmit={handleFormSubmit}>
-                <textarea name="comment" id="" cols="30" rows="10" className='border border-gray-400 block w-2/4 mx-auto'></textarea>
+                <textarea name="comment" id="" cols="30" rows="10" className='border border-gray-400 block w-2/4 mx-auto px-3'></textarea>
                 <button type="submit" className="my-3 inline-block px-6 py-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
             </form>
         </div>

@@ -12,11 +12,13 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const photo = form.photoUrl.value;
         signUp(email, password)
             .then(result => {
                 const user = result.user
                 updateProfile(user, {
                     displayName: name,
+                    photoURL: photo,
                 }).then(() => {
                     console.log(user)
                 }).catch((error) => {
@@ -85,6 +87,15 @@ const Register = () => {
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                     id="registerName"
                                     placeholder="Full Name"
+                                />
+                            </div>
+                            {/* PhotoURL input  */}
+                            <div className="mb-6">
+                                <input
+                                    type="text" name="photoUrl"
+                                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    id="registerPhoto"
+                                    placeholder="PhotoUrl"
                                 />
                             </div>
                             {/* Email input  */}

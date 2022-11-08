@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../../layout/Main/firebase/firebase.init';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 
 export const AuthContext = createContext();
@@ -26,6 +26,17 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
+    // log out 
+
+    const logOut = () => {
+        return signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                // An error happened.
+            });
+    }
+
     // user observer 
 
     useEffect(() => {
@@ -44,7 +55,8 @@ const AuthProvider = ({ children }) => {
         loading,
         signUp,
         signIn,
-        googleSignIn
+        googleSignIn,
+        logOut
     }
 
     return (

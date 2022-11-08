@@ -6,8 +6,12 @@ import { FaBars } from "react-icons/fa";
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [navbarOpen, setNavbarOpen] = React.useState(false);
+
+    const handleLogOut = () => {
+        logOut()
+    }
 
     return (
 
@@ -45,12 +49,26 @@ const Header = () => {
                                 <NavLink to="/blogs" className={({ isActive }) =>
                                     isActive ? 'flex items-center px-4 -mb-1 text-orange-600' : 'flex items-center px-4 -mb-1 border-b-2 border-transparent'}>Blogs</NavLink>
                             </li>
-                            <li className="flex">
-                                <NavLink to="/login" className={({ isActive }) =>
-                                    isActive ? 'flex items-center px-4 -mb-1 text-orange-600' : 'flex items-center px-4 -mb-1 border-b-2 border-transparent'}>
-                                    <button className="md:px-8 md:py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Log in</button>
-                                </NavLink>
-                            </li>
+                            {(user && user.uid) ? <>
+                                <li className="flex my-2">
+                                    <NavLink to="/reviews" className={({ isActive }) =>
+                                        isActive ? 'flex items-center px-4 -mb-1 text-orange-600' : 'flex items-center px-4 -mb-1 border-b-2 border-transparent'}>My Reviews</NavLink>
+                                </li>
+                                <li className="flex my-2">
+                                    <NavLink to="/addservice" className={({ isActive }) =>
+                                        isActive ? 'flex items-center px-4 -mb-1 text-orange-600' : 'flex items-center px-4 -mb-1 border-b-2 border-transparent'}>Add Service</NavLink>
+                                </li>
+                                <li className="flex my-2" onClick={handleLogOut}>
+                                    <NavLink to="" className='flex items-center px-4 -mb-1 border-b-2 border-transparent'>Logout</NavLink>
+                                </li>
+                            </> :
+                                <li className="flex">
+                                    <NavLink to="/login" className={({ isActive }) =>
+                                        isActive ? 'flex items-center px-4 -mb-1 text-orange-600' : 'flex items-center px-4 -mb-1 border-b-2 border-transparent'}>
+                                        <button className="md:px-8 md:py-3 rounded dark:bg-violet-400 dark:text-gray-900 font-bold">Log in</button>
+                                    </NavLink>
+                                </li>}
+
                         </ul>
 
                     </div>

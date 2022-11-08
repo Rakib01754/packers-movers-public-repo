@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import ReviewArea from '../Reviews/ReviewArea';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
@@ -25,6 +26,7 @@ const ServiceDetails = () => {
                     <img src={picture} alt="{name}" className="object-cover w-full rounded-md xl:col-span-3 bg-gray-500 md:8 lg:mt-36" />
                 </div>
             </section>
+            <ReviewArea service={service}></ReviewArea>
 
         </div>
     );

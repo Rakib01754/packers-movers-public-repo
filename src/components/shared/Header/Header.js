@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../../assets/logo.png'
 
 import { FaBars } from "react-icons/fa";
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
     const [navbarOpen, setNavbarOpen] = React.useState(false);
 
     return (

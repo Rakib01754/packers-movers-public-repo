@@ -1,9 +1,11 @@
 import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
+    useTitle('Register')
     const { signUp, googleSignIn } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const handleFormSubmit = (e) => {

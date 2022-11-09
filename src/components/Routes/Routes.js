@@ -8,6 +8,7 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import PrivateRoute from '../pages/PrivateRoute/PrivateRoute';
 import Register from '../pages/Register/Register';
+import EditReview from '../pages/Reviews/EditReview';
 import MyReviews from '../pages/Reviews/MyReviews';
 import ServiceDetails from '../pages/Services/ServiceDetails';
 import Services from '../pages/Services/Services';
@@ -51,6 +52,11 @@ const Routes = () => {
                 {
                     path: 'reviews',
                     element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+                },
+                {
+                    path: 'reviews/:id',
+                    loader: ({ params }) => fetch(`http://localhost:5000/myreviews/${params.id}`),
+                    element: <PrivateRoute><EditReview></EditReview></PrivateRoute>
                 },
                 {
                     path: 'addservice',

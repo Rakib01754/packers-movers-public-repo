@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
@@ -18,8 +19,17 @@ const Login = () => {
         console.log(email, password)
         signIn(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user)
+                toast.success('Login Successfull', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                });
                 navigate(from, { replace: true });
             })
             .catch((error) => {
@@ -31,8 +41,17 @@ const Login = () => {
     const handlegoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then((result) => {
-                const user = result.user;
-                console.log(user)
+                toast.success('Login Successfull', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                });
                 navigate(from, { replace: true });
             }).catch((error) => {
                 const errorMessage = error.message;

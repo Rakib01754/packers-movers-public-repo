@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../assets/logo.png'
-
 import { FaBars } from "react-icons/fa";
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const [navbarOpen, setNavbarOpen] = React.useState(false);
-
+    const navigate = useNavigate();
     const handleLogOut = () => {
         logOut()
+        navigate('/login')
     }
 
     return (

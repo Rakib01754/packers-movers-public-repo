@@ -18,13 +18,15 @@ const SampleService = () => {
                     services.map(service => <SingleService key={service._id} service={service}></SingleService>)
                 }
             </div>
-            <Link to='/services'>
-                <div>
+
+            <div>
+                <Link to='/services'>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold hover:text-white py-2 px-4 rounded my-6">
                         View All Services
                     </button>
-                </div>
-            </Link>
+                </Link>
+            </div>
+
         </>
 
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SubmitReview = ({ service, user }) => {
-    const { displayName, email } = user;
+const SubmitReview = ({ service, user, setRefresh, refresh }) => {
+    const { displayName, email, photoURL } = user;
     const { _id, name } = service;
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -12,8 +12,9 @@ const SubmitReview = ({ service, user }) => {
             userName: displayName,
             serviceName: name,
             email,
+            userImage: photoURL,
             comment,
-            time: new Date()
+            time: new Date().toLocaleString(),
         }
         console.log(reviewData)
         fetch('http://localhost:5000/reviews', {
@@ -27,12 +28,11 @@ const SubmitReview = ({ service, user }) => {
             .then(data => {
                 if (data.acknowledged) {
                     alert('Review Added Thanks for Your review')
+                    setRefresh(!refresh)
                 }
             })
             .catch(error => console.log(error))
         form.reset()
-
-
     }
     return (
         <div>

@@ -45,6 +45,7 @@ const MyReviews = () => {
     }
     return (
         <>
+            <h1 className='text-center text-5xl font-bold underline text-orange-600 my-6'>My Reviews</h1>
             {
                 (reviews.length) ?
                     <>

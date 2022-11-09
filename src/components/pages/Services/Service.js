@@ -6,7 +6,7 @@ const Service = ({ service }) => {
     const { name, details, fee, rating, picture, _id } = service
     return (
         <div className="flex justify-center">
-            <div className="rounded-lg shadow-lg bg-white max-w-sm">
+            <div className="rounded-lg shadow-lg bg-white max-w-sm border-2 border-orange-300">
                 <PhotoProvider>
                     <PhotoView src={picture}>
                         <img src={picture} className="rounded-t-lg h-80 w-full" alt="" />

@@ -1,11 +1,13 @@
 import { GoogleAuthProvider, updateProfile } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     useTitle('Register')
+    const navigate = useNavigate()
     const { signUp, googleSignIn } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const handleFormSubmit = (e) => {
@@ -18,19 +20,43 @@ const Register = () => {
         signUp(email, password)
             .then(result => {
                 const user = result.user
+                toast.success('Registration Successfull', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                });
                 updateProfile(user, {
                     displayName: name,
                     photoURL: photo,
                 }).then(() => {
-                    console.log(user)
-                }).catch((error) => {
-                    const errorMessage = error.message;
-                    console.log(errorMessage)
-                });
+                    toast.success('Profile Updated', {
+                        style: {
+                            border: '1px solid #713200',
+                            padding: '16px',
+                            color: '#713200',
+                        },
+                        iconTheme: {
+                            primary: '#713200',
+                            secondary: '#FFFAEE',
+                        },
+                    });
+                    navigate('/')
+                })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        toast.error(errorMessage)
+                    });
 
             })
             .catch((error) => {
-
+                const errorMessage = error.message;
+                toast.error(errorMessage)
             });
 
         form.reset()

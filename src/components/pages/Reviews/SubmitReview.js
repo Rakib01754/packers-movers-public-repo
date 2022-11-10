@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const SubmitReview = ({ service, user, setRefresh, refresh }) => {
     const { displayName, email, photoURL } = user;
@@ -27,11 +28,24 @@ const SubmitReview = ({ service, user, setRefresh, refresh }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Review Added Thanks for Your review')
+                    toast.success('Review added Successfully', {
+                        style: {
+                            border: '1px solid #713200',
+                            padding: '16px',
+                            color: '#713200',
+                        },
+                        iconTheme: {
+                            primary: '#713200',
+                            secondary: '#FFFAEE',
+                        },
+                    });
                     setRefresh(!refresh)
                 }
             })
-            .catch(error => console.log(error))
+            .catch((error) => {
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+            });
         form.reset()
     }
     return (

@@ -21,6 +21,10 @@ const Login = () => {
         console.log(email, password)
         signIn(email, password)
             .then(result => {
+                const user = result.user;
+                const currentUser = {
+                    email: user.email
+                }
                 toast.success('Login Successfull', {
                     style: {
                         border: '1px solid #713200',
@@ -32,11 +36,26 @@ const Login = () => {
                         secondary: '#FFFAEE',
                     },
                 });
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('packers-token', data.token)
+                    })
                 navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                toast.error(errorMessage)
             });
         form.reset()
     }

@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
 
     const logOut = () => {
         setLoading(true)
+        localStorage.removeItem('packers-token')
         return signOut(auth)
             .then(() => {
                 // Sign-out successful.

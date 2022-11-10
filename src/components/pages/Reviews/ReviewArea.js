@@ -17,7 +17,7 @@ const ReviewArea = ({ service }) => {
             .then(data => {
                 setCustomerReviews(data)
             });
-    }, [refresh]);
+    }, [refresh, _id]);
 
     return (
         <>

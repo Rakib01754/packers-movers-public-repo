@@ -15,7 +15,7 @@ const SubmitReview = ({ service, user, setRefresh, refresh }) => {
             email,
             userImage: photoURL,
             comment,
-            time: new Date().toLocaleString(),
+            time: new Date().toLocaleString()
         }
         console.log(reviewData)
         fetch('https://assignment-11-server-bay.vercel.app/reviews', {

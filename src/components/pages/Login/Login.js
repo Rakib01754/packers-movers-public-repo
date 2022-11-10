@@ -62,6 +62,10 @@ const Login = () => {
     const handlegoogleSignIn = () => {
         googleSignIn(googleProvider)
             .then((result) => {
+                const user = result.user;
+                const currentUser = {
+                    email: user.email
+                }
                 toast.success('Login Successfull', {
                     style: {
                         border: '1px solid #713200',
@@ -73,6 +77,20 @@ const Login = () => {
                         secondary: '#FFFAEE',
                     },
                 });
+                // get jwt token
+                fetch('https://assignment-11-server-bay.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('packers-token', data.token)
+                    })
                 navigate(from, { replace: true });
             }).catch((error) => {
                 const errorMessage = error.message;

@@ -26,8 +26,8 @@ const Routes = () => {
                 },
                 {
                     path: 'services',
-                    loader: () => fetch('https://assignment-11-server-bay.vercel.app/services')
-                    ,
+                    // loader: () => fetch('https://assignment-11-server-bay.vercel.app/services')
+                    // ,
                     element: <Services></Services>,
 
                 },

@@ -8,9 +8,9 @@ Live Website link: https://packers-movers-b086e.web.app/
 
  - This Project Is About Service Review Related.
  - To Build This Project I used React, React router, Tailwind, Mambaui, react hot toast, sweet alert2, React Photo View, Hyperui, React Responsive Carousel, React Loader Spinner, Firebase Etc. 
- - Here You Find Some Services about Loading Unloading, Commercial Movers, Long Distance Moving , Residential Movers, CCorporate Relocation ,Storage Units And More.
+ - Here You Find Some Services about Loading Unloading, Commercial Movers, Long Distance Moving , Residential Movers, Corporate Relocation ,Storage Units And More.
  - This site have 6 Main Routes (Home, Services, Blog, Login,My Reviews, Add Service).
- - Two Dynamic Route For Sigle Service Details and Review Edit Page Page.
+ - Two Dynamic Route For Sigle Service Details and Review Edit Page.
  - All The Codes are pushed on Github Private Repo
  - Finally This site hosted on Firebase
 

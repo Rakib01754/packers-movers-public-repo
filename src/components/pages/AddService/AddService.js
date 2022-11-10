@@ -17,7 +17,7 @@ const AddService = () => {
         const service = {
             name, details, fee, rating, picture
         }
-        fetch('http://localhost:5000/addservice', {
+        fetch('https://assignment-11-server-bay.vercel.app/addservice', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

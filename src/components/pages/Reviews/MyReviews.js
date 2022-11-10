@@ -10,7 +10,7 @@ const MyReviews = () => {
     const [reviews, setReviews] = useState([])
     console.log(reviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+        fetch(`https://assignment-11-server-bay.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('packers-token')}`
             }
@@ -22,7 +22,7 @@ const MyReviews = () => {
                 return res.json()
             })
             .then(data => setReviews(data))
-    }, [user?.email]);
+    }, [logOut, user?.email]);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -35,7 +35,7 @@ const MyReviews = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/reviews/${id}`, {
+                fetch(`https://assignment-11-server-bay.vercel.app/reviews/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

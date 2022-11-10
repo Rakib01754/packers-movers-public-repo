@@ -18,7 +18,7 @@ const SubmitReview = ({ service, user, setRefresh, refresh }) => {
             time: new Date().toLocaleString(),
         }
         console.log(reviewData)
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assignment-11-server-bay.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

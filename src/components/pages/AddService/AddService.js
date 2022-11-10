@@ -1,11 +1,9 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 
 const AddService = () => {
     useTitle('Add Service')
-    const navigate = useNavigate()
     const handleFormSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -29,7 +27,6 @@ const AddService = () => {
                 if (data.acknowledged) {
                     toast.success('Service added success')
                     form.reset();
-                    navigate('/services')
                 }
             })
             .catch(error => console.log(error))
@@ -44,7 +41,7 @@ const AddService = () => {
                     <textarea rows='10' cols='20' type="text" name="details" id="details" className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent mb-2 border-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Write Something About Your Service" required />
                     <input type="text" name="picture" id="photoURL" className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent mb-2 border-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Photo URL Here" required />
                     <div className='flex justify-between'>
-                        <input type="number" name="rating" id="rating" className="block py-2.5 px-2 w-[45%] text-sm text-gray-900 bg-transparent border-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Input Rating Out Of 10" required />
+                        <input type="number" min="0" max="10" name="rating" id="rating" className="block py-2.5 px-2 w-[45%] text-sm text-gray-900 bg-transparent border-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Input Rating Out Of 10" required />
                         <input type="number" name="fee" id="serviceFee" className="block py-2.5 px-2 w-[45%] text-sm text-gray-900 bg-transparent border-2 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Service Fee" required />
                     </div>
                 </div>

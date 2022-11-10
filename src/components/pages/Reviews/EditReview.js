@@ -13,7 +13,6 @@ const EditReview = () => {
         const form = e.target;
         const newComment = form.comment.value;
         const reviewData = {
-            serviceId: _id,
             userName,
             serviceName,
             email,

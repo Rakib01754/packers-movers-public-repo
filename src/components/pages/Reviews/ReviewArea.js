@@ -26,7 +26,7 @@ const ReviewArea = ({ service }) => {
                     <h1 className="p-4 text-4xl font-bold underline leading-none text-center text-orange-600">What our customers are saying about us</h1>
                 </div>
                 {
-                    (customerReviews.length > 0) ? <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
+                    (customerReviews.length > 0) ? <div /* className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10" */>
                         {
                             customerReviews.map(review => <SingleReview key={review._id} review={review} ></SingleReview>)
                         }

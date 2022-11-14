@@ -10,19 +10,24 @@ const MyReviews = () => {
     const [reviews, setReviews] = useState([])
     console.log(reviews)
     useEffect(() => {
-        fetch(`https://assignment-11-server-bay.vercel.app/reviews?email=${user?.email}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('packers-token')}`
-            }
-        })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut()
+        const localToken = localStorage.getItem('packers-token')
+        if (user?.email && localToken) {
+            fetch(`https://assignment-11-server-bay.vercel.app/reviews?email=${user?.email}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('packers-token')}`
                 }
-                return res.json()
             })
-            .then(data => setReviews(data))
-    }, [logOut, user?.email]);
+                .then(res => {
+                    if (res.status === 401 || res.status === 403) {
+                        return logOut()
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setReviews(data);
+                })
+        }
+    }, [user?.email, logOut])
 
     const handleDelete = (id) => {
         Swal.fire({

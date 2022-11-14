@@ -10,36 +10,23 @@ const Blogs = () => {
                 <div className="container max-w-4xl px-10 py-6 mx-auto">
                     <div className="mt-3 border-2 p-4 border-orange-200 shadow-lg rounded-lg">
                         <h5 className="text-3xl font-bold hover:underline">Difference between SQL and NoSQL</h5>
-                        <table class="border-separate border-spacing-2 border border-slate-400 w-full">
-                            <thead>
-                                <tr className='bg-gray-600 text-white'>
-                                    <th class="border border-slate-300 py-4">SQL</th>
-                                    <th class="border border-slate-300 py-4">NOSQL</th>
-                                </tr>
-                            </thead>
-                            <tbody className='font-semibold'>
-                                <tr>
-                                    <td class="border border-slate-300">RELATIONAL DATABASE MANAGEMENT SYSTEM (RDBMS)</td>
-                                    <td class="border border-slate-300">Non-relational or distributed database system.</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-slate-300">These databases have fixed or static or predefined schema</td>
-                                    <td class="border border-slate-300">They have dynamic schema</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-slate-300">These databases are best suited for complex queries</td>
-                                    <td class="border border-slate-300">These databases are not so good for complex queries</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-slate-300">Follows ACID property</td>
-                                    <td class="border border-slate-300">Follows CAP(consistency, availability, partition tolerance)</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-slate-300">Examples: MySQL, PostgreSQL, Oracle, MS-SQL Server etc</td>
-                                    <td class="border border-slate-300">Examples: MongoDB, GraphQL, HBase, Neo4j, Cassandra etc</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className='text-left'>
+                            <h4 className='text-xl font-bold underline'>SQL</h4>
+                            <p>1.RELATIONAL DATABASE MANAGEMENT SYSTEM (RDBMS) <br /></p>
+                            <p>2.These databases have fixed or static or predefined schema <br /></p>
+                            <p>3.These databases are best suited for complex queries <br /></p>
+                            <p>4.Follows ACID property <br /></p>
+                            <p>5.Examples: MySQL, PostgreSQL, Oracle, MS-SQL Server etc</p>
+                        </div>
+                        <div className='text-left'>
+                            <h4 className='text-xl font-bold underline'>NOSQL</h4>
+                            <p>1.Non-relational or distributed database system. <br /></p>
+                            <p>2.They have dynamic schema <br /></p>
+                            <p>3.These databases are not so good for complex queries <br /></p>
+                            <p>4.Follows CAP(consistency, availability, partition tolerance) <br /></p>
+                            <p>5.Examples: MongoDB, GraphQL, HBase, Neo4j, Cassandra etc</p>
+                        </div>
+
                     </div>
                     <div className="mt-3  border-2 p-4 border-orange-200 shadow-lg rounded-lg">
                         <h2 className="text-3xl font-bold hover:underline">What is JWT, and how does it work?</h2>

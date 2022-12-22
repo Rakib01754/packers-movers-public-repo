@@ -8,7 +8,6 @@ const MyReviews = () => {
     useTitle('My Reviews')
     const { user, logOut } = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
-    console.log(reviews)
     useEffect(() => {
         const localToken = localStorage.getItem('packers-token')
         if (user?.email && localToken) {
